@@ -43,7 +43,7 @@
 
       .close {
         background: none;
-        color: white;
+        color: black;
         border: 0;
       }
 
@@ -124,9 +124,11 @@
 
       .overlay.open {
         display: grid;
+        align-items: center;
+        justify-items: center;
       }
 
-      .overlay figure {
+      .overlay-inner {
         background: white;
         width: 700px;
         padding: 20px;
@@ -158,6 +160,19 @@
         return Math.floor(Math.random() * limit) + 1;
       }
 
+      function handleClick(e) {
+        // console.log(e.currentTarget);
+        const src = e.currentTarget.querySelector('img').src;
+        // console.log(src);
+        // Display clicked image
+        overlayImage.src = src;
+        overlay.classList.add('open');
+      }
+
+      function close() {
+        overlay.classList.remove('open');
+      }
+
       const digits = Array.from({ length: 50 }, () => [
         randomNumber(4),
         randomNumber(4),
@@ -186,6 +201,12 @@
       // console.log(html);
 
       gallery.innerHTML = html;
+
+      const items = document.querySelectorAll('.item');
+
+      items.forEach((item) => item.addEventListener('click', handleClick));
+
+      overlayClose.addEventListener('click', close);
     </script>
   </body>
 </html>
