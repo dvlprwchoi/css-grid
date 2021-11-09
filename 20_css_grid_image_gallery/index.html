@@ -76,12 +76,21 @@
         display: grid;
         justify-items: center;
         align-items: center;
+        transition: 0.2s;
+        transform: translateY(100%);
       }
 
       .item__overlay button {
         background: none;
         border: 2px solid white;
         color: white;
+        text-transform: uppercase;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px;
+      }
+
+      .item:hover .item__overlay {
+        transform: translateY(0);
       }
 
       .item.v2 {
